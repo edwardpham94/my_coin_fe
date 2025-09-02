@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--card: 0 0% 100%;
+		--card-foreground: 0 0% 3.9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0% 3.9%;
+
+		--primary: #141416;
+		--primary-foreground: 0 0% 98%;
+
+		--primary2: #18191d;
+
+		--secondary: #b1b5c3;
+		--secondary-low-opacity: rgba(177, 181, 195, 0.1);
+		--secondary-foreground: 0 0% 9%;
+
+		--secondary2: #ffffff;
+
+		--muted: 0 0% 96.1%;
+		--muted-foreground: 0 0% 45.1%;
+
+		--accent: #9485fe;
+		--accent-foreground: 0 0% 9%;
+
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 0 0% 89.8%;
+		--input: rgb(36, 36, 40);
+		--inputHover: rgb(51, 51, 56);
+		--ring: #9485fe;
+
+		--radius: 0.5rem;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
+@layer utilities {
+	.toggle-btn {
+		@apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:bg-transparent;
+	}
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	overflow-x: hidden;
+	width: 100vw;
+}
+
+.primary-btn {
+	background-color: var(--accent);
+	box-shadow: 0 0 10px var(--accent);
+	transition: 0.5s;
+	transition-property: box-shadow;
+}
+
+.primary-btn:hover {
+	box-shadow: 0 0 5px var(--accent);
+	box-shadow: 0 0 10px var(--accent);
+	box-shadow: 0 0 15px var(--accent);
+}
+
+/* hero page image animation */
+@keyframes bounce-slow {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-30px);
+	}
+}
+
+.animate-bounce-slow {
+	animation: bounce-slow 4s ease-in-out infinite;
+}
+
+/* faded grid background for home hero section */
+#home-hero-background {
+	height: 100vh;
+	width: 100vw;
+	background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+		linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+	background-size: 200px 200px; /* Size of the grid cells */
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-shadow: 0px 0px 100px 150px #141416 inset;
+}
+
+@media only screen and (max-width: 600px) {
+	#home-hero-background {
+		background-size: 100px 100px; /* Size of the grid cells */
+		box-shadow: 0px 0px 100px 80px #141416 inset;
+	}
+}
+
+/* Firefox scrollbar */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent) var(--primary);
+}
+
+/* Chrome, Edge and safari scrollbar */
+*::-webkit-scrollbar {
+	width: 17px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--primary);
+	border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--accent);
+	border-radius: 14px;
+	border: 3px solid var(--primary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--accent);
+}
