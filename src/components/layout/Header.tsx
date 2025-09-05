@@ -79,34 +79,35 @@ export default function Header() {
           </button>
 
           <Link href="/" className="text-xl cursor-pointer">
-            <span className="font-bold">Crypto</span>Cove
+            <span className="font-bold">Mycoin</span>
           </Link>
 
           <nav
             className="hidden text-secondary lg:block space-x-8 text-xl"
             aria-label="main"
           >
-            <Link href="/portfolio" className="text-sm relative group">
+            {/* <Link href="/portfolio" className="text-sm relative group">
               Portfolio Tracker
               <div className="absolute bottom-0 top-[36px] left-0 w-full h-1 bg-accent opacity-0 transition-opacity duration-100 group-hover:opacity-100"></div>
-            </Link>
+            </Link> */}
 
-            <Link href="/swap" className="text-sm relative group">
+            {/* <Link href="/swap" className="text-sm relative group">
               Swap
               <div className="absolute bottom-0 top-[36px] left-0 w-full h-1 bg-accent opacity-0 transition-opacity duration-100 group-hover:opacity-100"></div>
-            </Link>
-
-            <Dialog>
-              <DialogTrigger className="text-sm relative group">
-                Buy Crypto
-                <div className="absolute bottom-0 top-[36px] left-0 w-full h-1 bg-accent opacity-0 transition-opacity duration-100 group-hover:opacity-100"></div>
-              </DialogTrigger>
-              <DialogContent className="bg-primary2 border-hidden p-10">
-                <DialogHeader>
-                  <BuyCryptoForm />
-                </DialogHeader>
-              </DialogContent>
-            </Dialog>
+            </Link> */}
+            {isLoggedIn && (
+              <Dialog>
+                <DialogTrigger className="text-sm relative group">
+                  Buy Crypto
+                  <div className="absolute bottom-0 top-[36px] left-0 w-full h-1 bg-accent opacity-0 transition-opacity duration-100 group-hover:opacity-100"></div>
+                </DialogTrigger>
+                <DialogContent className="bg-primary2 border-hidden p-10">
+                  <DialogHeader>
+                    <BuyCryptoForm />
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            )}
 
             <Link href="/cryptocurrencies" className="text-sm relative group">
               Cryptocurrencies
@@ -123,25 +124,40 @@ export default function Header() {
             alt="user"
             className="block lg:hidden"
           />
-          <Image
+          {/* <Image
             src="/PNG/cog-icon.svg"
             width={24}
             height={24}
             alt="settings"
             className="cursor-pointer hidden lg:block hover:rotate-[15deg] duration-100 ease-in-out"
-          />
+          /> */}
 
           {isLoggedIn ? (
-            <Avatar />
+            <>
+              <Link
+                href="/profile"
+                className="hover:opacity-90 w-full text-center"
+                // onClick={toggleMenu}
+              >
+                <Image
+                  src="/PNG/wallet-icon.png"
+                  width={0}
+                  height={0}
+                  alt="wallet icon"
+                  sizes="100vw"
+                  style={{ width: "32px", height: "32px" }}
+                  className="cursor-pointer"
+                ></Image>
+              </Link>
+              <Avatar />
+            </>
           ) : (
             <Dialog>
               <DialogTrigger className="text-sm primary-btn pl-6 pr-6 pt-2 pb-2 rounded-full hidden lg:block">
                 Get Started
               </DialogTrigger>
               <DialogContent className="bg-primary2 border-hidden p-10">
-                <Tabs
-                  className="w-full"
-                >
+                <Tabs className="w-full">
                   <TabsList className="flex gap-6 w-full bg-transparent items-center">
                     <TabsTrigger value="login" className="text-2xl">
                       Login to Wallet
@@ -160,23 +176,6 @@ export default function Header() {
               </DialogContent>
             </Dialog>
           )}
-
-          <Sheet>
-            <SheetTrigger>
-              <Image
-                src="/PNG/wallet-icon.png"
-                width={0}
-                height={0}
-                alt="wallet icon"
-                sizes="100vw"
-                style={{ width: "32px", height: "32px" }}
-                className="cursor-pointer"
-              ></Image>
-            </SheetTrigger>
-            <SheetContent className="border-none">
-              <SidebarPopup />
-            </SheetContent>
-          </Sheet>
         </div>
       </section>
 

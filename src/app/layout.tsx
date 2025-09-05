@@ -8,7 +8,7 @@ import GitHubFooter from '../components/layout/GitHubFooter';
 const roboto = Roboto({ weight: '400', style: ['normal'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'CryptoCove',
+	title: 'Mycoin',
 	description: 'A crypto exchange website.',
 	icons: {
 		icon: '/PNG/icon.ico',

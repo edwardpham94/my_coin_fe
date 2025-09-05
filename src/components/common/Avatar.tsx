@@ -32,7 +32,7 @@ const Avatar: React.FC<AvatarProps> = ({
     Cookies.remove("privateKey");
 
     console.log("Token cleared, user logged out.");
-    window.location.reload();
+    window.location.href = "/";
   };
 
   return (
@@ -59,12 +59,12 @@ const Avatar: React.FC<AvatarProps> = ({
       {isMenuVisible && (
         <div className="absolute top-full right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-lg border border-gray-200 z-10">
           <ul className="py-2">
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+            {/* <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
               Profile
             </li>
             <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
               Settings
-            </li>
+            </li> */}
             <li
               className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500"
               onClick={handleLogout}

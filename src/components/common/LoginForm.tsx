@@ -40,19 +40,12 @@ export default function LoginForm() {
         password: values.password,
       });
 
-      console.log(
-        "Login successful:",
-        response?.data,
-        response?.data?.accessToken
-      );
-
-		Cookies.set("accessToken", response?.data?.accessToken, { expires: 7 });
-
+      Cookies.set("accessToken", response?.data?.accessToken, { expires: 7 });
       Cookies.set("isLoggedIn", "true");
       Cookies.set("walletAddress", response?.data?.walletAddress);
       Cookies.set("username", response?.data?.username);
       Cookies.set("accessToken", response?.data?.accessToken);
-      //   window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error("Signup failed:", error);
     }

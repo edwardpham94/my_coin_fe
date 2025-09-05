@@ -60,18 +60,22 @@ export default function TransactionsMarket({
 
               <div className="hidden lg:flex place-self-end items-center h-full lg:pl-4 lg:pr-4">
                 <p className="text-center text-xs lg:text-base text-green-500 bg-green-400 bg-opacity-10 p-2 rounded-lg font-bold">
-                  {"$ " + transaction.amount}
+                  {"MCoin " + transaction.amount}
                 </p>
               </div>
 
               <div className="place-self-end flex items-center h-full lg:pl-4 lg:pr-4">
                 <div className={`flex items-center gap-1`}>
-                  <p className="hidden lg:block">{transaction.fromAddress}</p>
+                  <p className="truncate max-w-[200px] overflow-hidden whitespace-nowrap">
+                    {transaction.fromAddress}
+                  </p>
                 </div>
               </div>
 
               <div className="place-self-end text-sm hidden md:flex lg:text-base items-center h-full lg:pl-4 lg:pr-4">
-                <p>{transaction.toAddress}</p>
+                <p className="truncate max-w-[200px] overflow-hidden whitespace-nowrap">
+                  {transaction.toAddress}
+                </p>
               </div>
 
               <div className="text-sm lg:text-base place-self-end hidden md:flex items-center h-full lg:pl-4 lg:pr-4">

@@ -155,7 +155,7 @@ export default function Market({ isHomePage }: MarketProps) {
             ></div>
           </button>
 
-          <button
+          {/* <button
             onClick={(e) =>
               updatecurrentMarketSelection(e.currentTarget.innerText)
             }
@@ -169,7 +169,7 @@ export default function Market({ isHomePage }: MarketProps) {
                   : "opacity-0"
               } transition-opacity duration-100`}
             ></div>
-          </button>
+          </button> */}
         </div>
 
         <div id="crypto-list" className="flex flex-col gap-4 w-full">

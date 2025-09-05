@@ -59,7 +59,7 @@ export default function BlocksMarket({
               </div>
 
               <div className="hidden lg:flex place-self-end items-center h-full lg:pl-4 lg:pr-4">
-                <p className="text-center text-xs lg:text-base text-green-500 bg-green-400 bg-opacity-10 p-2 rounded-lg font-bold">
+                <p className="text-center text-xs lg:text-base text-yellow-500 bg-yellow-200 bg-opacity-10 p-2 rounded-lg font-bold">
                   {transaction.nonce}
                 </p>
               </div>
@@ -87,7 +87,7 @@ export default function BlocksMarket({
                   className={`flex items-center gap-1 ${
                     transaction.transactions.length === 0
                       ? "text-red-500 bg-red-400 bg-opacity-10 p-2 rounded-lg font-bold"
-                      : "text-green-500 bg-green-400 bg-opacity-10 p-2 rounded-lg font-bold"
+                      : "text-blue-500 bg-blue-200 bg-opacity-10 p-2 rounded-lg font-bold"
                   }`}
                 >
                   <p className="hidden lg:block">
