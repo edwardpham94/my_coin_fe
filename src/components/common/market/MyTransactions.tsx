@@ -1,17 +1,22 @@
-import Image from "next/image";
+/** @format */
 
-interface TransactionsMarketProps {
+import Image from "next/image";
+import Cookies from "js-cookie";
+
+interface TMyTransactionsProps {
   transactions: Transaction[];
   selectedPage: number;
   pageItemCount: number;
   isHomePage: boolean;
 }
 
-export default function TransactionsMarket({
+export default function MyTransactions({
   transactions,
   selectedPage,
   pageItemCount,
-}: TransactionsMarketProps) {
+}: TMyTransactionsProps) {
+  const myWalletAddress = Cookies.get("walletAddress") || "";
+
   return (
     <>
       <div
@@ -59,8 +64,16 @@ export default function TransactionsMarket({
               </div>
 
               <div className="hidden lg:flex place-self-end items-center h-full lg:pl-4 lg:pr-4">
-                <p className="text-center text-xs lg:text-base text-green-500 bg-green-400 bg-opacity-10 p-2 rounded-lg font-bold">
-                  {transaction.amount}
+                <p
+                  className={`text-center text-xs lg:text-base ${
+                    transaction.fromAddress !== myWalletAddress
+                      ? "text-green-500 bg-green-400 bg-opacity-10 p-2 rounded-lg font-bold"
+                      : "text-red-500 bg-red-300 bg-opacity-10 p-2 rounded-lg font-bold"
+                  }"`}
+                >
+                  {transaction.fromAddress !== myWalletAddress
+                    ? `+ ${transaction.amount}`
+                    : `- ${transaction.amount}`}
                 </p>
               </div>
 

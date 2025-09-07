@@ -35,47 +35,39 @@ const Avatar: React.FC<AvatarProps> = ({
     window.location.href = "/";
   };
 
-  return (
-    <div className="relative flex items-center">
-      {/* Avatar */}
-      <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
-        <div
-          className="rounded-full overflow-hidden border border-gray-300"
-          style={{ width: size, height: size }}
-        >
-          <img
-            src={src || "/default-avatar.png"}
-            alt={alt}
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="flex flex-col ml-2">
-          <span className="text-[16px] font-medium">{username}</span>
-          <span className="text-sm font-medium text-gray-500">User</span>
-        </div>
-      </div>
+ const initials = username
+   ? username.trim().substring(0, 2).toUpperCase()
+   : "U";
 
-      {/* Dropdown Menu */}
-      {isMenuVisible && (
-        <div className="absolute top-full right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-lg border border-gray-200 z-10">
-          <ul className="py-2">
-            {/* <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-              Profile
-            </li>
-            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
-              Settings
-            </li> */}
-            <li
-              className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500"
-              onClick={handleLogout}
-            >
-              Logout
-            </li>
-          </ul>
-        </div>
-      )}
-    </div>
-  );
+ return (
+   <div className="relative flex items-center">
+     <div className="flex items-center cursor-pointer" onClick={toggleMenu}>
+       <div
+         className="flex items-center justify-center rounded-full border border-gray-300 bg-gray-200 text-gray-700 font-semibold"
+         style={{ width: size, height: size }}
+       >
+         <span className="text-sm">{initials}</span>
+       </div>
+       <div className="flex flex-col ml-2">
+         <span className="text-[16px] font-medium">{username}</span>
+         <span className="text-sm font-medium text-gray-500">User</span>
+       </div>
+     </div>
+
+     {isMenuVisible && (
+       <div className="absolute top-full right-0 mt-2 w-40 bg-white text-black shadow-lg rounded-lg border border-gray-200 z-10">
+         <ul className="py-2">
+           <li
+             className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-red-500"
+             onClick={handleLogout}
+           >
+             Logout
+           </li>
+         </ul>
+       </div>
+     )}
+   </div>
+ );
 };
 
 export default Avatar;

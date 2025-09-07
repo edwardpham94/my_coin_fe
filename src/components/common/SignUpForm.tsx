@@ -39,9 +39,9 @@ const formSchema = z
   );
 
 export default function SignUpForm() {
-  const [isModalVisible, setIsModalVisible] = useState(true); // State to control modal visibility
-  const [privateKey, setPrivateKey] = useState("abcs-private jet"); // State to store the private key
-  const [isHidden, setIsHidden] = useState(true); // State to toggle visibility
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [privateKey, setPrivateKey] = useState("abcs-private jet");
+  const [isHidden, setIsHidden] = useState(false);
 
   const toggleVisibility = () => {
     setIsHidden((prev) => !prev);
@@ -74,6 +74,7 @@ export default function SignUpForm() {
       Cookies.set("username", response?.data?.username, { expires: 7 });
       Cookies.set("publicKey", response?.data?.publicKey, { expires: 7 });
       Cookies.set("privateKey", response?.data?.privateKey, { expires: 7 });
+      Cookies.set("accessToken", response?.data?.accessToken, { expires: 7 });
 
       setPrivateKey(response?.data?.privateKey);
       setIsModalVisible(true);
@@ -178,7 +179,10 @@ export default function SignUpForm() {
           <div className="flex items-center justify-center">
             <button
               className="btn-primary mt-2 border-[2px] rounded-md w-fit px-4 py-2 "
-              onClick={() => setIsModalVisible(false)}
+              onClick={() => {
+                setIsModalVisible(false);
+                window.location.href = "/profile";
+              }}
             >
               Close
             </button>

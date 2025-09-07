@@ -33,16 +33,16 @@ export default function Market({ isHomePage }: MarketProps) {
       try {
         if (currentMarketSelection === "cryptocurrencies") {
           const data = await axiosInstance.get(
-            `/transactions?page=${page - 1}&size=20`
+            `/transactions?page=${page - 1}&size=10`
           );
-          console.log(data?.data?.totalPages);
+          // console.log(data?.data?.totalPages);
           setTransactions(data?.data?.content);
           setTotalPages(data?.data?.totalPages);
         } else if (currentMarketSelection === "exchanges") {
           const data = await axiosInstance.get(
-            `/blocks?page=${page - 1}&size=20`
+            `/blocks?page=${page - 1}&size=10`
           );
-          console.log(data?.data);
+          // console.log(data?.data);
           setBlocks(data?.data?.content);
           setTotalPages(data?.data?.totalPages);
         } else if (currentMarketSelection === "categories") {

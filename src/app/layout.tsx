@@ -4,32 +4,34 @@ import './globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import GitHubFooter from '../components/layout/GitHubFooter';
+import { Toaster } from "react-hot-toast";
 
-const roboto = Roboto({ weight: '400', style: ['normal'], subsets: ['latin'] });
+const roboto = Roboto({ weight: "400", style: ["normal"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: 'Mycoin',
-	description: 'A crypto exchange website.',
-	icons: {
-		icon: '/PNG/icon.ico',
-	},
+  title: "Mycoin",
+  description: "A crypto exchange website.",
+  icons: {
+    icon: "/PNG/icon.ico",
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={`${roboto.className} text-white bg-black antialiased max-w-screen min-h-screen flex flex-col overflow-x-hidden`}
-			>
-				<Header />
-				{children}
-				<Footer />
-				<GitHubFooter />
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body
+        className={`${roboto.className} text-white bg-black antialiased max-w-screen min-h-screen flex flex-col overflow-x-hidden`}
+      >
+        <Header />
+        {children}
+        <Footer />
+        <GitHubFooter />
+        <Toaster position="top-right" reverseOrder={false} />
+      </body>
+    </html>
+  );
 }
